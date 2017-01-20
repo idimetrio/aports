@@ -13,7 +13,7 @@ license="GPLv3 LGPL3"
 depends=""
 makedepends="zlib-dev gnutls-dev mariadb-dev postgresql-dev net-snmp-dev
 	libnet-dev libgcrypt-dev libee-dev libestr-dev liblogging-dev
-	libfastjson-dev util-linux-dev py-docutils hiredis-dev"
+	libfastjson-dev util-linux-dev py-docutils hiredis-dev librelp-dev"
 subpackages="$pkgname-doc $pkgname-mysql $pkgname-pgsql $pkgname-tls
 	$pkgname-snmp $pkgname-hiredis $pkgname-dbg"
 source="http://www.rsyslog.com/files/download/$pkgname/$pkgname-$pkgver.tar.gz
@@ -48,6 +48,7 @@ build() {
 		--enable-mail \
 		--enable-omprog \
 		--enable-omstdout \
+		--enable-omrelp \
 		--enable-omudpspoof \
 		--enable-imptcp \
 		--enable-impstats \
