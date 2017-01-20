@@ -48,7 +48,7 @@ build() {
 		--enable-mail \
 		--enable-omprog \
 		--enable-omstdout \
-		--enable-omrelp \
+		--enable-relp \
 		--enable-omudpspoof \
 		--enable-imptcp \
 		--enable-impstats \
