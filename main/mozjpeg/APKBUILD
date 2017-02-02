@@ -1,0 +1,50 @@
+# Maintainer: Dimitri Krivonogov <dev@dimitri.kr>
+pkgname=mozjpeg
+pkgver=3.1
+pkgrel=0
+pkgdesc="Improved JPEG encoder."
+url="https://github.com/mozilla/mozjpeg"
+arch="all"
+license="GPL"
+depends=""
+depends_dev=""
+makedepends="$depends_dev"
+install=""
+replaces="libjpeg-turbo"
+subpackages="$pkgname-doc $pkgname-dev $pkgname-utils"
+source="https://github.com/mozilla/mozjpeg/archive/v3.1.tar.gz"
+
+_builddir="$srcdir"/$pkgname-$pkgver
+
+build() {
+	cd "$_builddir"
+	./configure \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
+		--localstatedir=/var \
+		--with-jpeg8 \
+		--with-12bit \
+		|| return 1
+	make || return 1
+}
+
+package() {
+	cd "$_builddir"
+	make -j1 DESTDIR="$pkgdir" docdir=/usr/share/doc/$pkgname \
+		install || return 1
+}
+
+utils() {
+	pkgdesc="Utilities for manipulating JPEG images"
+	replaces="libjpeg-turbo-utils"
+	mkdir -p "$subpkgdir"/usr
+	mv "$pkgdir"/usr/bin "$subpkgdir"/usr/
+}
+
+md5sums="55deb139b0cac3c8200b75d485fc13f3  v3.1.tar.gz"
+sha256sums="41429d3d253017433f66e3d472b8c7d998491d2f41caa7306b8d9a6f2a2c666c  v3.1.tar.gz"
+sha512sums="a03823cf4b3d1aada24e502fea0a979b1f656c01e55ffddc06013b9c79509c2da1e3bcf0b85282289451d77d4cb5f56dd8cbf6e492744836ddda1f7136534852  v3.1.tar.gz"
