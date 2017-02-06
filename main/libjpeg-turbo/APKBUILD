@@ -13,10 +13,10 @@ makedepends="$depends_dev nasm"
 install=""
 replaces="libjpeg"
 subpackages="$pkgname-doc $pkgname-dev $pkgname-utils"
-source="http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$pkgver.tar.gz
+source="https://github.com/mozilla/mozjpeg/releases/download/v3.1/mozjpeg-3.1-release-source.tar.gz
 	"
 
-_builddir="$srcdir"/libjpeg-turbo-$pkgver
+_builddir="$srcdir"/mozjpeg
 prepare() {
 	local i
 	cd "$_builddir"
@@ -65,6 +65,6 @@ dev() {
 	replaces="jpeg-dev"
 }
 
-md5sums="55deb139b0cac3c8200b75d485fc13f3  libjpeg-turbo-1.5.1.tar.gz"
-sha256sums="41429d3d253017433f66e3d472b8c7d998491d2f41caa7306b8d9a6f2a2c666c  libjpeg-turbo-1.5.1.tar.gz"
-sha512sums="a03823cf4b3d1aada24e502fea0a979b1f656c01e55ffddc06013b9c79509c2da1e3bcf0b85282289451d77d4cb5f56dd8cbf6e492744836ddda1f7136534852  libjpeg-turbo-1.5.1.tar.gz"
+md5sums="53d8f3f633ea333057e6e4d09323d2b6  mozjpeg-3.1-release-source.tar.gz"
+sha256sums="deedd88342c5da219f0047d9a290cd58eebe1b7a513564fcd8ebc49670077a1f  mozjpeg-3.1-release-source.tar.gz"
+sha512sums="2d6423a1776d1af3e5bea31b6e5e5ff50d9c333befa0a65bf8e502fb2216780136e3bf409e7b8cd52a13b7c2a04bb4496de84d377ab5c4ff7ea327c91d58a498  mozjpeg-3.1-release-source.tar.gz"
